@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Fontes e Destinações de Recursos - SEPLAG Niterói</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos auxiliares para as abas */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-blue-200">
+
+    <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight">Manual de Fontes e Destinações de Recursos</h1>
+            <p class="mt-2 text-blue-100 text-lg">Município de Niterói · SEPLAG / Subsecretaria de Orçamento</p>
+            <p class="text-sm text-blue-200 mt-1">Revisão: Maio/2026 | Atualizado até Portaria STN/MF nº 636/2026</p>
+        </div>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8" id="tabs">
+                <button onclick="switchTab('conceito')" class="tab-btn active border-b-2 border-blue-600 text-blue-600 py-4 px-1 text-sm font-medium">Conceito</button>
+                <button onclick="switchTab('fontes')" class="tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-4 px-1 text-sm font-medium">Fontes de Recursos</button>
+                <button onclick="switchTab('cos')" class="tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-4 px-1 text-sm font-medium">Códigos de Acompanhamento (CO)</button>
+                <button onclick="switchTab('detalhamentos')" class="tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-4 px-1 text-sm font-medium">Detalhamentos</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 min-h-screen">
+        
+        <section id="conceito" class="tab-content active bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">O que é a Fonte/Destinação de Recursos?</h2>
+            <div class="prose max-w-none text-gray-600 space-y-4">
+                <p>A classificação por <strong>Fontes/Destinações de Recursos</strong> (FR) tem como objetivo principal identificar a origem e garantir a rastreabilidade da aplicação dos recursos públicos. Ela demonstra se o recurso é vinculado a uma finalidade específica estabelecida em lei ou se é de livre alocação (recurso ordinário).</p>
+                <p>No ciclo orçamentário e financeiro do município, o controle rigoroso da fonte permite assegurar que os mínimos constitucionais (como MDE e ASPS) e os repasses de convênios, royalties e emendas parlamentares sejam aplicados estritamente nos objetivos pactuados.</p>
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mt-6 rounded-r">
+                    <h3 class="font-bold text-blue-800">Estrutura da Codificação (2026)</h3>
+                    <ul class="list-disc ml-5 mt-2 text-blue-900 space-y-1 text-sm">
+                        <li><strong>Código da Fonte (3 dígitos):</strong> Identifica a vinculação principal do recurso (Ex: 500 para recursos não vinculados, 540 para FUNDEB).</li>
+                        <li><strong>Código de Acompanhamento - CO (4 dígitos):</strong> Marcador complementar obrigatório que especifica políticas públicas, emendas e limites constitucionais.</li>
+                        <li><strong>Detalhamento (2 dígitos):</strong> Nível municipal para separar contas bancárias específicas ou desdobramentos de arrecadação (Ex: Tesouro vs. Administração Indireta).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="fontes" class="tab-content">
+            <div class="mb-6 flex justify-between items-center">
+                <h2 class="text-2xl font-semibold text-gray-900">Catálogo de Fontes</h2>
+                <input type="text" id="search-fontes" placeholder="Buscar por código ou nome..." class="px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 w-72" onkeyup="filterFontes()">
+            </div>
+            <div id="fontes-container" class="grid grid-cols-1 gap-6">
+                </div>
+        </section>
+
+        <section id="cos" class="tab-content">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Códigos de Acompanhamento da Execução Orçamentária (CO)</h2>
+            <div class="bg-white rounded-lg shadow overflow-hidden border border-gray-200">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Código</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nomenclatura</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Especificação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cos-tbody" class="bg-white divide-y divide-gray-200">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="detalhamentos" class="tab-content">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Detalhamentos de Fonte (Nível 3)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="dets-container">
+                </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-6 mt-12">
+        <p class="text-sm">Desenvolvido para acompanhamento orçamentário - DAEP / SEPLAG</p>
+    </footer>
+
+    <script src="data.js"></script>
+
+    <script>
+        // Mapeamento das cores do seu JS para classes do Tailwind
+        const colorMap = {
+            'gray':   'bg-gray-100 text-gray-800 border-gray-200',
+            'blue':   'bg-blue-100 text-blue-800 border-blue-200',
+            'coral':  'bg-red-100 text-red-800 border-red-200',
+            'teal':   'bg-teal-100 text-teal-800 border-teal-200',
+            'amber':  'bg-yellow-100 text-yellow-800 border-yellow-200',
+            'green':  'bg-green-100 text-green-800 border-green-200',
+            'purple': 'bg-purple-100 text-purple-800 border-purple-200'
+        };
+
+        // Função para alternar as abas
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active', 'border-blue-600', 'text-blue-600');
+                el.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+            activeBtn.classList.remove('border-transparent', 'text-gray-500');
+            activeBtn.classList.add('active', 'border-blue-600', 'text-blue-600');
+        }
+
+        // Função utilitária para gerar badges de CO
+        function getCOBadge(code) {
+            if (code === 0) return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border border-gray-200">0 - Não se aplica</span>`;
+            const colorClass = colorMap[CO_COLORS[code]] || colorMap['gray'];
+            const name = CO_NAMES[code] || '';
+            const spec = CO_SPECS[code] || '';
+            return `<span title="${spec}" class="cursor-help inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${colorClass}">${code} - ${name}</span>`;
+        }
+
+        // Função utilitária para gerar badges de Detalhamento
+        function getDetBadge(code) {
+            const det = DETALHAMENTOS.find(d => d.code === code);
+            const name = det ? det.name : 'Desconhecido';
+            const desc = det ? det.desc : '';
+            return `<span title="${desc}" class="cursor-help inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-700 border border-slate-300">${code} - ${name}</span>`;
+        }
+
+        // Renderizar Fontes
+        function renderFontes() {
+            const container = document.getElementById('fontes-container');
+            container.innerHTML = FONTES.map(fonte => `
+                <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 fonte-card transition duration-150 hover:shadow-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-xl font-bold text-gray-900">
+                            <span class="text-blue-600 mr-2">${fonte.code}</span>
+                            ${fonte.name}
+                        </h3>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${colorMap[fonte.badge]}">${fonte.block}</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">${fonte.spec}</p>
+                    
+                    <div class="mt-4 border-t border-gray-100 pt-4">
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Detalhamentos Compatíveis:</span>
+                            <div class="flex flex-wrap gap-2">
+                                ${fonte.dets.length ? fonte.dets.map(d => getDetBadge(d)).join('') : '<span class="text-xs text-gray-400">Nenhum</span>'}
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">COs Aplicáveis (Despesa/Receita):</span>
+                            <div class="flex flex-wrap gap-2">
+                                ${fonte.cos.length ? fonte.cos.map(co => getCOBadge(co)).join('') : '<span class="text-xs text-gray-400">Nenhum</span>'}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filtro de Fontes
+        function filterFontes() {
+            const term = document.getElementById('search-fontes').value.toLowerCase();
+            document.querySelectorAll('.fonte-card').forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(term) ? 'block' : 'none';
+            });
+        }
+
+        // Renderizar COs na Tabela
+        function renderCOs() {
+            const tbody = document.getElementById('cos-tbody');
+            // Ordenar por código antes de renderizar
+            const sortedCOs = [...COS_FULL].sort((a, b) => a.code - b.code);
+            
+            tbody.innerHTML = sortedCOs.map(co => {
+                const colorClass = colorMap[CO_COLORS[co.code]] || colorMap['gray'];
+                return `
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
+                        <span class="px-2 py-1 rounded border ${colorClass}">${co.code}</span>
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-900 font-medium">${CO_NAMES[co.code] || '-'}</td>
+                    <td class="px-6 py-4 text-sm text-gray-500">${CO_SPECS[co.code] || '-'}</td>
+                </tr>
+            `}).join('');
+        }
+
+        // Renderizar Detalhamentos
+        function renderDetalhamentos() {
+            const container = document.getElementById('dets-container');
+            container.innerHTML = DETALHAMENTOS.map(det => {
+                const isTesouro = det.range === 'tesouro';
+                const typeColor = isTesouro ? 'bg-indigo-50 text-indigo-700 border-indigo-200' : 'bg-emerald-50 text-emerald-700 border-emerald-200';
+                return `
+                <div class="bg-white border border-gray-200 rounded-lg p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-lg font-bold text-gray-900 border-b-2 border-gray-900 pb-1">${det.code}</span>
+                            <span class="text-xs font-semibold px-2 py-1 rounded border uppercase ${typeColor}">${det.range}</span>
+                        </div>
+                        <h4 class="font-medium text-gray-900 mb-2">${det.name}</h4>
+                        <p class="text-sm text-gray-600">${det.desc}</p>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        // Inicializar aplicação
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFontes();
+            renderCOs();
+            renderDetalhamentos();
+        });
+    </script>
+</body>
+</html>
