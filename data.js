@@ -131,7 +131,7 @@ const FONTES = [
     name: 'Outros recursos não vinculados',
     spec: 'Outros recursos não vinculados que não se enquadram como impostos ou transferências de impostos. Inclui recursos de participação especial (det. 02), outros não vinculados (det. 03), taxa sem destinação específica (det. 04) e receitas de compensação de precatórios com dívida ativa (CO 5001).',
     /* Anexo III: dets 00, 02, 03, 48, 49, 99 | COs: 0, 5001 */
-    dets: ['00', '02', '03', '04', '48', '49', '99'],
+    dets: ['00', '02', '03', '04', '49', '99'],
     cos: [0, 5001],
   },
   {
@@ -881,7 +881,6 @@ const DETALHAMENTOS = [
   { code: '10', range: 'tesouro',  name: 'Fundo de Mobilidade Urbana — Tesouro (FMMU)',           desc: 'Recurso vinculado ao Fundo de Mobilidade Urbana arrecadado pelo Tesouro municipal. Dentro da FR 759 (recursos vinculados a fundos).' },
   { code: '12', range: 'tesouro',  name: 'Outorga onerosa do direito de construir — Tesouro',     desc: 'Recurso vinculado referente à outorga onerosa do direito de construir (art. 28 do Estatuto da Cidade). Dentro das FR 759 e FR 799.' },
   { code: '14', range: 'tesouro',  name: 'Transferências constitucionais de impostos',            desc: 'Recurso referente à arrecadação própria de impostos e às transferências constitucionais de impostos. Dentro da FR 500.' },
-  { code: '48', range: 'tesouro',  name: 'Outros recursos não vinculados — Tesouro',              desc: 'Detalhamento adicional da FR 501 para outros recursos não vinculados do Tesouro, conforme necessidade de controle.' },
   { code: '49', range: 'tesouro',  name: 'Rendimento financeiro — Tesouro',                       desc: 'Registro dos rendimentos de aplicações financeiras de recursos do Tesouro. Segue a mesma fonte do recurso principal, conforme regra do MCASP.' },
   /* Faixa Indiretas: 50–99 */
   { code: '50', range: 'indireta', name: 'Padrão Indiretas — sem detalhamento específico',        desc: 'Registra a arrecadação das entidades da Administração Indireta de acordo com a descrição geral da fonte. A maioria das arrecadações das indiretas usará este código.' },
