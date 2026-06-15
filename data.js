@@ -130,7 +130,7 @@ const FONTES = [
     block: 'livres', code: '501', badge: 'blue',
     name: 'Outros recursos não vinculados',
     spec: 'Outros recursos não vinculados que não se enquadram como impostos ou transferências de impostos. Inclui recursos de participação especial (det. 02), outros não vinculados (det. 03), taxa sem destinação específica (det. 04) e receitas de compensação de precatórios com dívida ativa (CO 5001).',
-    /* Anexo III: dets 00, 02, 03, 48, 49, 99 | COs: 0, 5001 */
+    /* Anexo III: dets 00, 02, 03, 49, 99 | COs: 0, 5001 */
     dets: ['00', '02', '03', '04', '49', '99'],
     cos: [0, 5001],
   },
