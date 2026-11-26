@@ -776,25 +776,25 @@ const FONTES = [
 
   /* ── RECURSOS EXTRAORÇAMENTÁRIOS ── */
   {
-    block: 'outras', code: '860', badge: 'gray',
+    block: 'extraorcamentarias', code: '860', badge: 'gray',
     name: 'Recursos Extraorçamentários Vinculados a Precatórios',
     spec: 'Controle dos recursos financeiros junto aos tribunais de justiça vinculados ao pagamento de precatórios.',
     cos: [], dets: [],
   },
   {
-    block: 'outras', code: '861', badge: 'gray',
+    block: 'extraorcamentarias', code: '861', badge: 'gray',
     name: 'Recursos Extraorçamentários Vinculados a Depósitos Judiciais',
     spec: 'Controle dos recursos financeiros junto aos tribunais de justiça vinculados aos depósitos judiciais.',
     cos: [], dets: [],
   },
   {
-    block: 'outras', code: '862', badge: 'gray',
+    block: 'extraorcamentarias', code: '862', badge: 'gray',
     name: 'Recursos de Depósitos de Terceiros',
     spec: 'Controle dos recursos financeiros decorrentes de depósitos de terceiros.',
     cos: [], dets: [],
   },
   {
-    block: 'outras', code: '869', badge: 'gray',
+    block: 'extraorcamentarias', code: '869', badge: 'gray',
     name: 'Outros Recursos Extraorçamentários',
     spec: 'Controle dos demais recursos financeiros extraorçamentários, como, por exemplo, retenções e consignações.',
     cos: [], dets: ['00'],
