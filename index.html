@@ -24,6 +24,7 @@
   --c-legais:#6B5FCC;--c-legais-bg:rgba(107,95,204,0.13);
   --c-prev:#888;--c-prev-bg:rgba(136,136,136,0.13);
   --c-outras:#5F5E5A;--c-outras-bg:rgba(95,94,90,0.11);
+  --c-extra:#A8895A;--c-extra-bg:rgba(168,137,90,0.12);
   --c-minimos:#E24B4A;--c-fundeb:#1D9E75;--c-ep-propria:#BA7517;
   --c-rpps-cap:#6B5FCC;--c-rpps-rep:#378ADD;--c-rpps-mil:#888;
   --c-calami:#D85A30;--c-ep-uniao:#C9A84C;--c-ep-estado:#4D9E22;--c-precat:#9B94E8;
@@ -150,6 +151,7 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--txt);min-
 .fpill-transferencias{background:var(--c-transf-bg);color:var(--c-transf);border:1px solid rgba(216,90,48,0.25)}
 .fpill-legais{background:var(--c-legais-bg);color:var(--c-legais);border:1px solid rgba(107,95,204,0.25)}
 .fpill-previdencia{background:var(--c-prev-bg);color:var(--c-prev);border:1px solid rgba(136,136,136,0.25)}
+.fpill-extraorcamentarias{background:var(--c-extra-bg);color:var(--c-extra);border:1px solid rgba(168,137,90,0.25)}
 .fpill-outras{background:var(--c-outras-bg);color:var(--c-outras);border:1px solid rgba(95,94,90,0.25)}
 .fpill-minimos{background:rgba(226,75,74,0.13);color:#E24B4A;border:1px solid rgba(226,75,74,0.25)}
 .fpill-fundeb{background:rgba(29,158,117,0.13);color:#1D9E75;border:1px solid rgba(29,158,117,0.25)}
@@ -181,6 +183,7 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--txt);min-
 .fonte-card[data-block="transferencias"]{border-left-color:var(--c-transf)}
 .fonte-card[data-block="legais"]{border-left-color:var(--c-legais)}
 .fonte-card[data-block="previdencia"]{border-left-color:var(--c-prev)}
+.fonte-card[data-block="extraorcamentarias"]{border-left-color:var(--c-extra)}
 .fonte-card[data-block="outras"]{border-left-color:var(--c-outras)}
 .fc-header{display:flex;align-items:flex-start;gap:12px;padding:.95rem 1.15rem .6rem;cursor:default}
 .fc-code{font-family:'Barlow Condensed',sans-serif;font-size:26px;color:var(--gold);font-weight:700;line-height:1;flex-shrink:0;min-width:48px;letter-spacing:.5px}
@@ -257,7 +260,7 @@ footer span{color:var(--orange);opacity:.7}
   <div class="stat-item"><div class="stat-num" id="st-fontes">—</div><div class="stat-lbl">Fontes</div></div>
   <div class="stat-item"><div class="stat-num" id="st-cos">—</div><div class="stat-lbl">Cód. Acompan.</div></div>
   <div class="stat-item"><div class="stat-num" id="st-dets">—</div><div class="stat-lbl">Detalhamentos</div></div>
-  <div class="stat-item"><div class="stat-num">8</div><div class="stat-lbl">Blocos</div></div>
+  <div class="stat-item"><div class="stat-num">9</div><div class="stat-lbl">Blocos</div></div>
 </div>
 
 <!-- ══ NAV ══ -->
@@ -323,6 +326,7 @@ footer span{color:var(--orange);opacity:.7}
       <button class="fpill fpill-transferencias" onclick="setFonteFilter('transferencias',this)">Transferências <span class="count-badge" id="cnt-transferencias">—</span></button>
       <button class="fpill fpill-legais" onclick="setFonteFilter('legais',this)">Vinc. Legais <span class="count-badge" id="cnt-legais">—</span></button>
       <button class="fpill fpill-previdencia" onclick="setFonteFilter('previdencia',this)">Previdência <span class="count-badge" id="cnt-previdencia">—</span></button>
+      <button class="fpill fpill-extraorcamentarias" onclick="setFonteFilter('extraorcamentarias',this)">Extraorçamentárias <span class="count-badge" id="cnt-extraorcamentarias">—</span></button>
       <button class="fpill fpill-outras" onclick="setFonteFilter('outras',this)">Outras <span class="count-badge" id="cnt-outras">—</span></button>
     </div>
   </div>
@@ -405,7 +409,7 @@ footer span{color:var(--orange);opacity:.7}
 })();
 
 /* ══ HELPERS ══ */
-const BLOCK_LABELS={livres:'Recursos Livres',educacao:'Educação',saude:'Saúde',assistencia:'Assist. Social',transferencias:'Transferências',legais:'Vinc. Legais',previdencia:'Previdência',outras:'Outras'};
+const BLOCK_LABELS={livres:'Recursos Livres',educacao:'Educação',saude:'Saúde',assistencia:'Assist. Social',transferencias:'Transferências',legais:'Vinc. Legais',previdencia:'Previdência',extraorcamentarias:'Extraorçamentárias',outras:'Outras'};
 const CO_GROUP_CLASS={'Mínimos constitucionais':'minimos','FUNDEB':'fundeb','Emendas — orçamento próprio':'ep-propria','RPPS — Capitalização':'rpps-cap','RPPS — Repartição':'rpps-rep','RPPS — Militares':'rpps-mil','Calamidade pública':'calami','Emendas parlamentares — União':'ep-uniao','Emendas parlamentares — Estado':'ep-estado','Precatórios':'precat','Propag — Estados':'propag'};
 const CO_COLORS_HEX={minimos:'#E24B4A',fundeb:'#1D9E75','ep-propria':'#BA7517','rpps-cap':'#6B5FCC','rpps-rep':'#378ADD','rpps-mil':'#888','calami':'#D85A30','ep-uniao':'#C9A84C','ep-estado':'#4D9E22',precat:'#9B94E8',propag:'#E8600A'};
 
