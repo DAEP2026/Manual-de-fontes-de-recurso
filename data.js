@@ -2,7 +2,6 @@
    data.js — Dados do Manual de Fontes/Destinações de Recursos
    Município de Niterói · SEPLAG/SSO · Revisão outubro/2026
    Atualizado até Portaria STN/MF nº 1.986/2026 (06/07/2026)
-   Combinações FR × Detalhamento × CO conforme ANEXO III do Manual
    ============================================================ */
 
 const CO_COLORS = {
