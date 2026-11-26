@@ -2,6 +2,7 @@
    data.js — Dados do Manual de Fontes/Destinações de Recursos
    Município de Niterói · SEPLAG/SSO · Revisão outubro/2026
    Atualizado até Portaria STN/MF nº 1.986/2026 (06/07/2026)
+   Combinações FR × Detalhamento × CO conforme ANEXO III do Manual
    ============================================================ */
 
 const CO_COLORS = {
@@ -141,21 +142,21 @@ const FONTES = [
     block: 'livres', code: '500', badge: 'blue',
     name: 'Recursos não Vinculados de Impostos',
     spec: 'Recursos de impostos e transferências de impostos de livre aplicação. Em atendimento ao disposto no inciso X do art. 4º da Lei Complementar nº 141/2012, para identificação do percentual mínimo aplicado em ASPS, essa fonte de recursos deverá ser associada ao marcador que identifica as despesas que podem ser consideradas para esse limite. A mesma lógica será utilizada para a identificação do percentual mínimo de aplicação em MDE.',
-    dets: ['00', '14', '50', '99'],
+    dets: ['00', '05', '14', '15', '50', '99'],
     cos: [0, 1001, 1002, 2111, 2121],
   },
   {
     block: 'livres', code: '501', badge: 'blue',
     name: 'Outros Recursos não Vinculados',
     spec: 'Outros recursos não vinculados que não se enquadram na especificação acima. Se os recursos de taxas e contribuições não forem vinculados por norma, devem ser classificados nesta fonte. No Plano de Contas de Niterói admite os detalhamentos 00, 02 (Participação Especial), 03, 49 e 99 (ANEXO III) e o 04 (Taxa sem Destinação Específica — recurso livre), previsto no texto do Manual.',
-    dets: ['00', '02', '03', '04', '49', '99'],
+    dets: ['00', '02', '03', '04', '06', '49', '50', '99'],
     cos: [0],
   },
   {
     block: 'livres', code: '502', badge: 'blue',
     name: 'Recursos não vinculados da compensação de impostos',
     spec: 'Controle dos recursos não vinculados provenientes da compensação de impostos. Essa fonte de recursos deverá ser associada ao marcador que identifica as despesas que podem ser consideradas para cumprimento dos limites mínimos de aplicação em ASPS (CO 1002) e em MDE (CO 1001). O ANEXO III relaciona a combinação 502.14 apenas com o CO 1002; a associação ao CO 1001 consta do ANEXO II.',
-    dets: ['14', '50', '99'],
+    dets: ['00', '14', '50', '99'],
     cos: [0, 1001, 1002],
   },
   {
@@ -255,7 +256,7 @@ const FONTES = [
     block: 'educacao', code: '570', badge: 'green',
     name: 'Transferências do Governo Federal referentes a Convênios e Instrumentos Congêneres vinculados à Educação',
     spec: 'Controle dos recursos originários de transferências em decorrência da celebração de convênios e instrumentos congêneres com a União, cuja destinação encontra-se vinculada a programas da educação. Admite os COs de emendas parlamentares da União (3110 individuais e 3120 de bancada).',
-    dets: ['50', '99'],
+    dets: ['00', '50', '99'],
     cos: [0, 3110, 3120],
   },
   {
@@ -269,21 +270,21 @@ const FONTES = [
     block: 'educacao', code: '572', badge: 'green',
     name: 'Transferências de Municípios referentes a Convênios e Instrumentos Congêneres vinculados à Educação',
     spec: 'Controle dos recursos originários de transferências em decorrência da celebração de convênios e instrumentos congêneres com outros municípios, cuja destinação encontra-se vinculada a programas da educação.',
-    dets: ['50', '99'],
+    dets: ['49', '50', '99'],
     cos: [0],
   },
   {
     block: 'educacao', code: '573', badge: 'green',
     name: 'Royalties e Participação Especial de Petróleo e Gás Natural Vinculados à Educação - Lei nº 12.858/2013',
     spec: 'Controle dos recursos vinculados à Educação, originários de transferências recebidas pelos entes, relativos a Royalties e Participação Especial com base no art. 2º da Lei nº 12.858/2013.',
-    dets: ['00', '49', '99'],
+    dets: ['00', '49', '50', '99'],
     cos: [0],
   },
   {
     block: 'educacao', code: '574', badge: 'green',
     name: 'Operações de Crédito Vinculadas à Educação',
     spec: 'Controle dos recursos originários de operações de crédito, cuja destinação encontra-se vinculada a programas da educação.',
-    dets: ['00', '49'],
+    dets: ['00', '49', '50', '99'],
     cos: [0],
   },
   {
@@ -320,7 +321,7 @@ const FONTES = [
     block: 'saude', code: '601', badge: 'teal',
     name: 'Transferências Fundo a Fundo de Recursos do SUS provenientes do Governo Federal – Bloco de Estruturação da Rede de Serviços Públicos de Saúde',
     spec: 'Controle dos recursos originários de transferências do Fundo Nacional de Saúde, referentes ao Sistema Único de Saúde (SUS) e relacionados ao Bloco de Estruturação na Rede de Serviços Públicos de Saúde.',
-    dets: ['50', '99'],
+    dets: ['49', '50', '99'],
     cos: [0],
   },
   {
@@ -341,7 +342,7 @@ const FONTES = [
     block: 'saude', code: '604', badge: 'teal',
     name: 'Transferências provenientes do Governo Federal destinadas ao vencimento dos agentes comunitários de saúde e dos agentes de combate às endemias',
     spec: 'Controle dos recursos originários do Governo Federal, referentes ao Sistema Único de Saúde (SUS), relacionados ao vencimento dos agentes comunitários de saúde e dos agentes de combate às endemias, nos termos do art. 198, §7º da Constituição Federal.',
-    dets: ['50', '99'],
+    dets: ['50', '51', '99'],
     cos: [0],
   },
   {
@@ -390,7 +391,7 @@ const FONTES = [
     block: 'saude', code: '634', badge: 'teal',
     name: 'Operações de Crédito vinculadas à Saúde',
     spec: 'Controle dos recursos originários de operações de crédito, cuja destinação encontra-se vinculada a programas da saúde.',
-    dets: ['00', '49'],
+    dets: ['00', '49', '50', '99'],
     cos: [0],
   },
   {
@@ -485,14 +486,14 @@ const FONTES = [
     block: 'transferencias', code: '704', badge: 'coral',
     name: 'Transferências da União Referentes a Compensações Financeiras pela Exploração de Recursos Naturais',
     spec: 'Controle dos recursos transferidos pela União, originários da arrecadação de royalties do petróleo, do gás natural, da cota-parte do bônus de assinatura de contrato de partilha de produção, exceto os recursos provenientes da Lei nº 12.858/2013, destinados às áreas da saúde ou da educação, e exceto os recursos classificados na FR 720 e na FR 721. O ANEXO III relaciona o detalhamento de Participação Especial (02) para esta fonte.',
-    dets: ['00', '02', '50', '99'],
+    dets: ['00', '02', '49', '50', '99'],
     cos: [0],
   },
   {
     block: 'transferencias', code: '705', badge: 'coral',
     name: 'Transferências dos Estados Referentes a Compensações Financeiras pela Exploração de Recursos Naturais',
     spec: 'Controle dos recursos transferidos pelos Estados, originários da arrecadação de royalties do petróleo, do gás natural, da cota-parte do bônus de assinatura de contrato de partilha de produção.',
-    dets: ['00', '49'],
+    dets: ['00', '49', '99'],
     cos: [0],
   },
   {
@@ -513,8 +514,8 @@ const FONTES = [
     block: 'transferencias', code: '708', badge: 'coral',
     name: 'Transferência da União Referente à Compensação Financeira de Recursos Minerais',
     spec: 'Controle dos recursos transferidos pela União, referentes à compensação financeira pela exploração de recursos minerais em atendimento às destinações e vedações previstas na legislação.',
-    dets: [],
-    cos: [],
+    dets: ['00'],
+    cos: [0],
   },
   {
     block: 'transferencias', code: '709', badge: 'coral',
@@ -562,22 +563,22 @@ const FONTES = [
     block: 'transferencias', code: '715', badge: 'coral',
     name: 'Transferências Destinadas ao Setor Cultural - LC nº 195/2022 – Art. 5º Audiovisual',
     spec: 'Controla a parcela dos recursos provenientes das transferências efetuadas pela União destinadas ao setor cultural, especificamente ao setor audiovisual, como ação emergencial adotada em decorrência dos efeitos econômicos e sociais da pandemia da covid-19, em cumprimento ao Art. 5º da Lei Complementar nº 195, de 8 de julho de 2022.',
-    dets: [],
-    cos: [],
+    dets: ['00', '49'],
+    cos: [0],
   },
   {
     block: 'transferencias', code: '716', badge: 'coral',
     name: 'Transferências Destinadas ao Setor cultural - LC nº 195/2022 – Art. 8º - Demais Setores da Cultura',
     spec: 'Controla a parcela dos recursos provenientes das transferências efetuadas pela União destinadas ao setor cultural, como ação emergencial adotada em decorrência dos efeitos econômicos e sociais da pandemia da covid-19, em cumprimento ao Art. 8º da Lei Complementar nº 195, de 8 de julho de 2022.',
-    dets: [],
-    cos: [],
+    dets: ['00', '49'],
+    cos: [0],
   },
   {
     block: 'transferencias', code: '717', badge: 'coral',
     name: 'Assistência Financeira Transporte Coletivo – Art. 5º, Inciso IV, EC nº 123/2022',
     spec: 'Controla os recursos provenientes das transferências da União a título de assistência financeira a serem utilizados no custeio da garantia prevista no §2º do art. 230 da CF, de gratuidade dos transportes coletivos urbanos aos maiores de 65 anos, conforme prevê o inciso IV, art. 5º, da Emenda Constitucional nº 123/2022.',
-    dets: [],
-    cos: [],
+    dets: ['00'],
+    cos: [0],
   },
   {
     block: 'transferencias', code: '718', badge: 'coral',
@@ -590,7 +591,7 @@ const FONTES = [
     block: 'transferencias', code: '719', badge: 'coral',
     name: 'Transferências da Política Nacional Aldir Blanc de Fomento à Cultura - Lei nº 14.399/2022',
     spec: 'Controla os recursos provenientes de transferências efetuadas pela União em decorrência da Política Nacional Aldir Blanc de Fomento à Cultura previstas no art. 6º da Lei nº 14.399, de 8 de julho de 2022.',
-    dets: ['00', '49'],
+    dets: ['00', '49', '99'],
     cos: [0],
   },
   {
@@ -604,8 +605,8 @@ const FONTES = [
     block: 'transferencias', code: '721', badge: 'coral',
     name: 'Transferências da União Referentes a Cessão Onerosa de Petróleo – Lei nº 13.885/2019',
     spec: 'Controle dos recursos transferidos pela União, provenientes da cessão onerosa à Petróleo Brasileiro S.A. - PETROBRAS, do exercício das atividades de pesquisa e lavra de petróleo, gás natural e outros hidrocarbonetos fluidos, originários dos leilões dos volumes excedentes ao limite a que se refere o § 2º do art. 1º da Lei nº 12.276, conforme estabelecido na Lei nº 13.885/2019.',
-    dets: [],
-    cos: [],
+    dets: ['00', '49'],
+    cos: [0],
   },
   {
     block: 'transferencias', code: '722', badge: 'coral',
@@ -641,7 +642,7 @@ const FONTES = [
     block: 'legais', code: '750', badge: 'purple',
     name: 'Recursos da Contribuição de Intervenção no Domínio Econômico - CIDE',
     spec: 'Controle dos recursos recebidos pelos Estados, Distrito Federal e Municípios, decorrentes da distribuição da arrecadação da União com a CIDE - Combustíveis, com base no disposto na Lei nº 10.336/2001.',
-    dets: ['00', '49'],
+    dets: ['00', '49', '99'],
     cos: [0],
   },
   {
@@ -655,7 +656,7 @@ const FONTES = [
     block: 'legais', code: '752', badge: 'purple',
     name: 'Recursos Vinculados ao Trânsito',
     spec: 'Controle dos recursos com a cobrança das multas de trânsito nos termos do art. 320 da Lei nº 9.503/1997 - Código de Trânsito Brasileiro.',
-    dets: ['00', '49'],
+    dets: ['00', '49', '99'],
     cos: [0],
   },
   {
@@ -676,7 +677,7 @@ const FONTES = [
     block: 'legais', code: '755', badge: 'purple',
     name: 'Recursos de Alienação de Bens/Ativos - Administração Direta',
     spec: 'Controle dos recursos decorrentes da alienação de bens da Administração Direta, nos termos do art. 44 da Lei Complementar nº 101/2000.',
-    dets: ['00', '49'],
+    dets: ['00', '49', '50'],
     cos: [0],
   },
   {
@@ -796,7 +797,7 @@ const FONTES = [
     block: 'outras', code: '869', badge: 'gray',
     name: 'Outros Recursos Extraorçamentários',
     spec: 'Controle dos demais recursos financeiros extraorçamentários, como, por exemplo, retenções e consignações.',
-    cos: [], dets: [],
+    cos: [], dets: ['00'],
   },
 
   /* ── OUTRAS VINCULAÇÕES ── */
@@ -805,7 +806,7 @@ const FONTES = [
     name: 'Recursos Próprios dos Consórcios',
     spec: 'Controle dos recursos próprios dos Consórcios Públicos (utilizada pelos consórcios públicos)',
     dets: [],
-    cos: [],
+    cos: [0],
   },
   {
     block: 'outras', code: '898', badge: 'gray',
@@ -818,7 +819,7 @@ const FONTES = [
     block: 'outras', code: '899', badge: 'gray',
     name: 'Outros Recursos Vinculados',
     spec: 'Controle dos recursos cuja aplicação seja vinculada e não tenha sido enquadrado em outras especificações. O ANEXO III relaciona o detalhamento 62 (outorga onerosa do direito de construir – Indiretas) para esta fonte.',
-    dets: ['00', '49', '50', '62', '99'],
+    dets: ['00', '49', '50', '54', '55', '62', '99'],
     cos: [0],
   },
 ];
