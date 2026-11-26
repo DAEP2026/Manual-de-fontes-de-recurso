@@ -160,6 +160,7 @@ body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--txt);min-
 .fpill-calami{background:rgba(216,90,48,0.13);color:#D85A30;border:1px solid rgba(216,90,48,0.25)}
 .fpill-ep-uniao{background:rgba(201,168,76,0.13);color:#C9A84C;border:1px solid rgba(201,168,76,0.25)}
 .fpill-ep-estado{background:rgba(77,158,34,0.13);color:#4D9E22;border:1px solid rgba(77,158,34,0.25)}
+.fpill-propag{background:rgba(232,96,10,0.13);color:#E8600A;border:1px solid rgba(232,96,10,0.25)}
 .fpill-precat{background:rgba(155,148,232,0.13);color:#9B94E8;border:1px solid rgba(155,148,232,0.25)}
 .count-badge{font-size:8.5px;padding:1px 5px;border-radius:8px;margin-left:4px;background:rgba(255,255,255,0.08);color:var(--txt-m);vertical-align:middle;font-family:'Inter',sans-serif}
 
@@ -247,7 +248,7 @@ footer span{color:var(--orange);opacity:.7}
         <div class="hero-sub">Na visão orçamentária</div>
       </div>
     </div>
-    <div class="hero-meta"><span>2026 – JUNHO</span> &nbsp;·&nbsp; Portaria STN/MF nº 636/2026 &nbsp;·&nbsp; ANEXO III completo</div>
+    <div class="hero-meta"><span>2026 – OUTUBRO</span> &nbsp;·&nbsp; Portaria STN/MF nº 1.986/2026 &nbsp;·&nbsp; ANEXO III completo</div>
   </div>
 </div>
 
@@ -275,13 +276,13 @@ footer span{color:var(--orange);opacity:.7}
 <div id="panel-conceito" class="panel active">
   <div class="conc-card">
     <p class="conc-lead">A classificação por <em>Fontes/Destinações de Recursos</em> identifica a origem e garante a rastreabilidade da aplicação dos recursos públicos ao longo de todo o ciclo orçamentário municipal.</p>
-    <p class="conc-body">Mecanismo integrador entre receita e despesa — o mesmo código que controla a destinação da receita orçamentária identifica a origem dos recursos que financiam a despesa. Obrigatório para todos os entes da Federação, nos termos da LRF (art. 8º, parágrafo único, e art. 50, I). A padronização nacional foi instituída pela Portaria Conjunta STN/SOF nº 20/2021 e atualizada até a Portaria STN/MF nº 636/2026.</p>
+    <p class="conc-body">Mecanismo integrador entre receita e despesa — o mesmo código que controla a destinação da receita orçamentária identifica a origem dos recursos que financiam a despesa. Obrigatório para todos os entes da Federação, nos termos da LRF (art. 8º, parágrafo único, e art. 50, I). A padronização nacional foi instituída pela Portaria STN nº 710/2021 e atualizada até a Portaria STN/MF nº 1.986, de 6 de julho de 2026.</p>
   </div>
   <div class="sec-title">Estrutura da codificação adotada por Niterói</div>
   <div class="struct-grid">
     <div class="struct-item">
       <div class="struct-num">N1</div><div class="struct-lbl">1 dígito · exercício</div>
-      <div class="struct-desc">Identifica se o recurso é do exercício corrente, de exercícios anteriores ou condicionado.</div>
+      <div class="struct-desc">Identifica se o recurso é do exercício corrente (1) ou de exercícios anteriores (2).</div>
       <div class="struct-ex">1 · 2 </div>
     </div>
     <div class="struct-item">
@@ -297,7 +298,7 @@ footer span{color:var(--orange);opacity:.7}
     <div class="struct-item">
       <div class="struct-num">N4</div><div class="struct-lbl">4 dígitos · CO</div>
       <div class="struct-desc">Código de Acompanhamento — identifica emendas, mínimos constitucionais e RPPS.</div>
-      <div class="struct-ex">1001 · 1070 · 3110 · 0</div>
+      <div class="struct-ex">1001 · 1070 · 3110 · 0000</div>
     </div>
   </div>
   <div class="code-example">
@@ -350,6 +351,7 @@ footer span{color:var(--orange);opacity:.7}
       <button class="fpill fpill-calami" onclick="setCOFilter('Calamidade pública',this)">Calamidade Pública</button>
       <button class="fpill fpill-ep-uniao" onclick="setCOFilter('Emendas parlamentares — União',this)">Emendas União</button>
       <button class="fpill fpill-ep-estado" onclick="setCOFilter('Emendas parlamentares — Estado',this)">Emendas Estado</button>
+      <button class="fpill fpill-propag" onclick="setCOFilter('Propag — Estados',this)">Propag (Estados)</button>
       <button class="fpill fpill-precat" onclick="setCOFilter('Precatórios',this)">Precatórios</button>
     </div>
   </div>
@@ -379,7 +381,7 @@ footer span{color:var(--orange);opacity:.7}
 </main>
 
 <footer>
-  DAEP · SEPLAG · Prefeitura de Niterói &nbsp;|&nbsp; <span>Revisão junho/2026</span> &nbsp;|&nbsp; Portaria STN/MF nº 636/2026
+  DAEP · SEPLAG · Prefeitura de Niterói &nbsp;|&nbsp; <span>Revisão outubro/2026</span> &nbsp;|&nbsp; Portaria STN/MF nº 1.986/2026
 </footer>
 
 <script src="data.js"></script>
@@ -404,8 +406,8 @@ footer span{color:var(--orange);opacity:.7}
 
 /* ══ HELPERS ══ */
 const BLOCK_LABELS={livres:'Recursos Livres',educacao:'Educação',saude:'Saúde',assistencia:'Assist. Social',transferencias:'Transferências',legais:'Vinc. Legais',previdencia:'Previdência',outras:'Outras'};
-const CO_GROUP_CLASS={'Mínimos constitucionais':'minimos','FUNDEB':'fundeb','Emendas — orçamento próprio':'ep-propria','RPPS — Capitalização':'rpps-cap','RPPS — Repartição':'rpps-rep','RPPS — Militares':'rpps-mil','Calamidade pública':'calami','Emendas parlamentares — União':'ep-uniao','Emendas parlamentares — Estado':'ep-estado','Precatórios':'precat'};
-const CO_COLORS_HEX={minimos:'#E24B4A',fundeb:'#1D9E75','ep-propria':'#BA7517','rpps-cap':'#6B5FCC','rpps-rep':'#378ADD','rpps-mil':'#888','calami':'#D85A30','ep-uniao':'#C9A84C','ep-estado':'#4D9E22',precat:'#9B94E8'};
+const CO_GROUP_CLASS={'Mínimos constitucionais':'minimos','FUNDEB':'fundeb','Emendas — orçamento próprio':'ep-propria','RPPS — Capitalização':'rpps-cap','RPPS — Repartição':'rpps-rep','RPPS — Militares':'rpps-mil','Calamidade pública':'calami','Emendas parlamentares — União':'ep-uniao','Emendas parlamentares — Estado':'ep-estado','Precatórios':'precat','Propag — Estados':'propag'};
+const CO_COLORS_HEX={minimos:'#E24B4A',fundeb:'#1D9E75','ep-propria':'#BA7517','rpps-cap':'#6B5FCC','rpps-rep':'#378ADD','rpps-mil':'#888','calami':'#D85A30','ep-uniao':'#C9A84C','ep-estado':'#4D9E22',precat:'#9B94E8',propag:'#E8600A'};
 
 function hexToRgb(h){const r=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return r?`${parseInt(r[1],16)},${parseInt(r[2],16)},${parseInt(r[3],16)}`:'128,128,128'}
 function coGroupOf(code){const e=COS_FULL.find(c=>c.code===code);return e?e.group:''}
